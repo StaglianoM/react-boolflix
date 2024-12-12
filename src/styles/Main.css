@@ -7,3 +7,18 @@
 .welcome {
     font-size: 24px;
 }
+
+.reset-buttn {
+    padding: 5px 5px;
+    background-color: #359dff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-top: 55px;
+}
+
+.reset-buttn:hover {
+    background-color: #aa0000;
+}
