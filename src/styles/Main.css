@@ -1,0 +1,9 @@
+.container-list {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.welcome {
+    font-size: 24px;
+}

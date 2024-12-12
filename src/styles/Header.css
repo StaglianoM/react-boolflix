@@ -1,0 +1,12 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(50, 50, 92);
+}
+
+.search {
+    background-color: blue;
+    color: white;
+}
