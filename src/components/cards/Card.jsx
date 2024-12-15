@@ -1,40 +1,39 @@
 import { getFlag } from "../../utils/flag";
+import Stars from "../cards/star";
+import styles from "./card.module.css";
 
 const Card = (item) => {
-
-    // Calcolo  media voti
-    const voteAverage = item.vote_average
-        ? Math.ceil(item.vote_average / 2)
-        : "N/A";
-
     return (
-        <div>
-            <h2>Nome: {item.name || "N/A"}</h2>
-            <p>Nome originale: {item.original_name || "N/A"}</p>
-
-            <p>Lingua originale:
+        <div className={styles['card-container']}>
+            <div className={styles['card-text']}>
+                <h2>Title:</h2>  {item.name || "N/A"}
+                <p>Original Title:</p> {item.original_name || "N/A"}
+                <p>Flag Language:  </p>
                 {getFlag(item.original_language)
                     ? (
                         <img
                             src={getFlag(item.original_language)}
                             alt={`Flag of ${item.original_language}`}
-                            width="20"
+                            width="25"
                         />
                     ) : (
                         <span>Lingua non disponibile</span>
                     )}
-            </p>
 
-            <p>Media voti: {voteAverage}</p>
-            {item.poster_path ? (
-                <img
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt={` ${item.name}`}
-                    width="215"
-                />
-            ) : (
-                <p>No poster available</p>
-            )}
+                <p>Average Vote:</p>
+                <Stars vote={item.vote_average || 0} />
+            </div>
+            <div className="card-image">
+                {item.poster_path ? (
+                    <img
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        alt={`${item.name}`}
+                        width="215"
+                    />
+                ) : (
+                    <p>No poster available</p>
+                )}
+            </div>
         </div>
     );
 };

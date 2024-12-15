@@ -46,14 +46,14 @@ const App = () => {
         <div>
             <Header query={query} setQuery={setQuery} handleSearch={handleSearch} />
 
-            <div className="container-list">
+            <div>
                 {results.length > 0 ? (
-                    <div className="found-list">
+                    <div>
                         {movies}
                     </div>
                 ) : (
                     searched && (
-                        <p className="welcome">Nessun risultato trovato. Prego cercare un altro Film/Serie.</p>
+                        <p className="check">Nessun risultato trovato. Prego cercare un altro Film/Serie.</p>
                     )
                 )}
 

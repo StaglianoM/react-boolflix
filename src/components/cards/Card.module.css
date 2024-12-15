@@ -1,0 +1,28 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 20px;
+}
+
+.card-text {
+    padding-right: 20px;
+    font-size: 24px;
+    color: rgb(250, 235, 235);
+}
+
+.card-image {
+    flex-shrink: 0;
+}
+
+.card-container h2,
+.card-container p {
+    font-size: 14px;
+    color: rgb(190, 190, 190);
+
+}
+
+.star-icon {
+    color: #ffcc00;
+    /* Colore giallo */
+}

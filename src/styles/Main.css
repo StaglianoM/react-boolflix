@@ -1,28 +1,24 @@
-.container-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    gap: 10px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #505050;
 }
 
-.found-list {
-    margin: 0 auto;
-}
-
-.welcome {
+.check {
     font-size: 24px;
 }
 
 .reset-buttn {
-    padding: 5px 5px;
+    padding: 5px 10px;
     background-color: #359dff;
     color: white;
-    border: none;
     cursor: pointer;
     font-size: 12px;
     border-radius: 5px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .reset-buttn:hover {
