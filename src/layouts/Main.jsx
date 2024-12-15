@@ -1,23 +1,17 @@
 import { useState } from "react";
 import Header from "./Header";
 import '../styles/Main.css';
+import Card from "../components/cards/Card";
 
 const App = () => {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
-
-    // Lista Bandiere 
-    const flags = {
-        it: "https://flagcdn.com/it.svg",
-        en: "https://flagcdn.com/us.svg",
-        gb: "https://flagcdn.com/gb.svg",
-        ja: "https://flagcdn.com/jp.svg",
-    };
+    const [searched, setSearched] = useState(false);
 
     // Funzione per caricare i risultati dall'API
-    const fetchResults = (searchQuery) => {
+    const fetchResults = (searchQuery, isMovie) => {
         fetch(
-            `https://api.themoviedb.org/3/search/tv?api_key=183e3914f50853ef35d6745d156ab32d&language=it_IT&query=${searchQuery}`
+            `https://api.themoviedb.org/3/search/${isMovie ? 'movie' : 'tv'}?api_key=183e3914f50853ef35d6745d156ab32d&language=it_IT&query=${searchQuery}`
         )
             .then((response) => {
                 if (!response.ok) {
@@ -36,19 +30,17 @@ const App = () => {
     // Funzione per gestire la ricerca e che si aggiorni la pagina all'invio
     const handleSearch = (e) => {
         e.preventDefault();
+        setSearched(true);  // Imposto che è stata effettuata una ricerca
         fetchResults(query); // Carico i risultati
     };
-
-    // Funzione per ottenere la bandiera in base alla lingua ed Restituisce la bandiera o nulla se la lingua non è stata trovata 
-    const getFlag = (language) => {
-        return flags[language] || null;
-    };
-
 
     const handleReset = () => {
         setQuery("");
         setResults([]);
+        setSearched(false);  // Resetta lo stato della ricerca
     };
+
+    const movies = results.map((item) => <Card {...item} key={item.id} />);
 
     return (
         <div>
@@ -57,44 +49,18 @@ const App = () => {
             <div className="container-list">
                 {results.length > 0 ? (
                     <div className="found-list">
-                        {results.map((item) => (
-                            <div key={item.id}>
-                                <h2>Nome: {item.name || "N/A"}</h2>
-                                <p>Nome originale: {item.original_name || "N/A"}</p>
-
-                                <p>Lingua originale:
-                                    {getFlag(item.original_language)
-                                        ? (
-                                            <img
-                                                src={getFlag(item.original_language)}
-                                                alt={`Flag of ${item.original_language}`}
-                                                width="20"
-                                            />
-                                        ) : (
-                                            <span>Lingua non disponibile</span>
-                                        )}</p>
-
-                                <p>Media voti: {item.vote_average || "N/A"}</p>
-                                {item.poster_path ? (
-                                    <img
-                                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                                        alt={` ${item.name}`}
-                                        width="215"
-                                    />
-                                ) : (
-                                    <p>No poster available</p>
-                                )}
-                            </div>
-                        ))}
-                        {results.length > 0 && (
-                            <button onClick={handleReset} className="reset-buttn">
-                                Back
-                            </button>
-                        )}
+                        {movies}
                     </div>
                 ) : (
-                    <p className="welcome">Benvenuto su BoolFlix, prego cercare il vostro Film/Serie tramite la barra di ricerca</p>
+                    searched && (
+                        <p className="welcome">Nessun risultato trovato. Prego cercare un altro Film/Serie.</p>
+                    )
                 )}
+
+                {searched && (
+                    <button onClick={handleReset} className="reset-buttn">
+                        Back
+                    </button>)}
             </div>
         </div>
     );

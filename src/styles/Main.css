@@ -1,7 +1,13 @@
 .container-list {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 20px;
+    gap: 10px;
+}
+
+.found-list {
+    margin: 0 auto;
 }
 
 .welcome {
@@ -16,7 +22,7 @@
     cursor: pointer;
     font-size: 12px;
     border-radius: 5px;
-    margin-top: 55px;
+    margin: 0 auto;
 }
 
 .reset-buttn:hover {
