@@ -26,12 +26,18 @@ const Card = (item) => {
             <div className="card-image">
                 {item.poster_path ? (
                     <img
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
                         alt={`${item.name}`}
                         width="215"
                     />
                 ) : (
-                    <p>No poster available</p>
+                    <img
+                        src="/card600.jpg"
+                        alt="No poster available"
+                        width="220"
+
+                    />
+
                 )}
             </div>
         </div>

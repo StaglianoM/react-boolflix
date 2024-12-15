@@ -20,7 +20,7 @@ const App = () => {
                 return response.json();
             })
             .then((data) => {
-                setResults(data.results.slice(0, 1)); // Mostro solo il PRIMO risultato
+                setResults(data.results.slice(0, 5)); // mostro X risultati
             })
             .catch((error) => {
                 console.error("Errore:", error);

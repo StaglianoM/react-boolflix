@@ -1,8 +1,11 @@
 import '../styles/Header.css'
 
+
 const Navbar = ({ query, setQuery, handleSearch }) => {
     return (
         <nav className="nav">
+            <a href="http://localhost:5173">
+                <img src="/vite.svg" alt="Logo" className="logo" /></a>
             <h1>Ricerca Serie TV</h1>
             <form onSubmit={handleSearch}>
                 <input
