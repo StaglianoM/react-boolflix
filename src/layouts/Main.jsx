@@ -45,8 +45,8 @@ const App = () => {
     return (
         <div>
             <Header query={query} setQuery={setQuery} handleSearch={handleSearch} />
-
             <div>
+
                 {results.length > 0 ? (
                     <div>
                         {movies}
