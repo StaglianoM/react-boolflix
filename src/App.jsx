@@ -9,11 +9,12 @@ const App = () => {
   const [query, setQuery] = useState("");
 
   return (
-    <div>
-
-      <Main query={query} setQuery={setQuery} />
-      <Footer />
-    </div>
+    <main>
+      <div>
+        <Main query={query} setQuery={setQuery} />
+        <Footer />
+      </div>
+    </main>
   );
 };
 

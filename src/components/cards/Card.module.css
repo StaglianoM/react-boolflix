@@ -8,8 +8,8 @@
     width: 215px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-
+    overflow-y: auto;
+    height: 40vh;
 }
 
 .card-text {
@@ -34,7 +34,7 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 10px;
+    padding: 7px;
     opacity: 0;
 }
 

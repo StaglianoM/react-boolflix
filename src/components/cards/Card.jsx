@@ -10,7 +10,7 @@ const Card = (item) => {
                     <img
                         className={styles['card-image']}
                         src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
-                        alt={`${item.name}`}
+                        alt={`${item.name || item.title}`}
                     />
                 ) : (
                     <img
@@ -20,25 +20,27 @@ const Card = (item) => {
                     />
                 )}
 
-                <p className={styles['no-image']}>{!item.poster_path && "No poster available"}</p>
+                {!item.poster_path && (
+                    <p className={styles['no-image']}>No poster available</p>
+                )}
+
                 <div className={styles['card-info']}>
-                    <h2>Title:</h2>  {item.name || "N/A"}
-                    <p>Original Title:</p> {item.original_name || "N/A"}
-                    <p>Flag Language:  </p>
-                    {getFlag(item.original_language)
-                        ? (
+                    <h2>{item.title ? "Film:" : "Serie TV:"}</h2>
+                    <h3>{item.title || item.name || "N/A"}</h3>
+                    <p>Original Title: {item.original_title || item.original_name || "N/A"}</p>
+                    <p>Language:
+                        {getFlag(item.original_language) ? (
                             <img
                                 src={getFlag(item.original_language)}
                                 alt={`Flag of ${item.original_language}`}
                                 width="25"
                             />
                         ) : (
-                            <span>Lingua non disponibile</span>
+                            <span> Not available</span>
                         )}
-                    <p>Average Vote:</p>
-                    <Stars vote={item.vote_average || 0} />
-                    <p>Overview:</p>
-                    <p>{item.overview || "No overview available."}</p>
+                    </p>
+                    <p>Average Vote: <Stars vote={item.vote_average || 0} /></p>
+                    <p>Overview: {item.overview || "No overview available."}</p>
                 </div>
             </div>
         </div>
