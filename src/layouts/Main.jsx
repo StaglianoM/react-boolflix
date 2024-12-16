@@ -48,7 +48,7 @@ const App = () => {
             <div>
 
                 {results.length > 0 ? (
-                    <div>
+                    <div className="container-cards">
                         {movies}
                     </div>
                 ) : (
